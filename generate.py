@@ -4,7 +4,7 @@ from transformers import BertTokenizer
 from bark.generation import SAMPLE_RATE, preload_models, codec_decode, generate_coarse, generate_fine, generate_text_semantic
 
 # Enter your prompt and speaker here
-text_prompt = "可以白嫖亚马逊的"
+text_prompt = "可以白嫖亚马逊的，我们再套壳，名字就叫贾维斯，然后就是帮你做内部的插件集成，效果整合，---或者我们做这个的社区，分享集成插件实现的方式"
 voice_name = "CXM" # use your custom voice name here if you have one
 
 # load the tokenizer
