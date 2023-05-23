@@ -22,8 +22,8 @@ model = load_codec_model(use_gpu=True)
 
 # Load and pre-process the audio waveform
 audio_filepath = 'audio_CXM_short.wav' # the audio you want to clone (will get truncated so 5-10 seconds is probably fine, existing samples that I checked are around 7 seconds)
-#device = 'cuda' # or 'cpu'
-device = 'cpu'
+device = 'cuda' # or 'cpu'
+#device = 'cpu'
 wav, sr = torchaudio.load(audio_filepath)
 wav = convert_audio(wav, sr, model.sample_rate, model.channels)
 wav = wav.unsqueeze(0).to(device)

@@ -3,4 +3,5 @@ conda config --add envs_dirs /nfs/project/opt/miniconda3/envs
 
 source activate py38_torch2
 
-python generate.py
+python clone_voice.py
+#python generate.py
