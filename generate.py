@@ -19,7 +19,8 @@ from bark.generation import SAMPLE_RATE, preload_models, codec_decode, generate_
 
 # Enter your prompt and speaker here
 #text_prompt = "可以白嫖亚马逊的"
-text_prompt = "我们再套壳! 名字就叫贾维斯，然后就是帮你做内部的插件集成，效果整合，---或者我们做这个的社区，分享集成插件实现"
+text_prompt = "我们再套壳! 名字就叫贾维斯"
+#text_prompt = "然后就是帮你做内部的插件集成，效果整合，---或者我们做这个的社区，分享集成插件实现"
 voice_name = "CXM" # use your custom voice name here if you have one
 
 # load the tokenizer
@@ -53,3 +54,4 @@ from scipy.io.wavfile import write as write_wav
 # save audio
 filepath = "./output/audio.wav" # change this to your desired output path
 write_wav(filepath, SAMPLE_RATE, audio_array)
+
