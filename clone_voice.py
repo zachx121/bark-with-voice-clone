@@ -102,5 +102,5 @@ x_fine_gen = generate_fine(
 audio_array = codec_decode(x_fine_gen)
 from scipy.io.wavfile import write as write_wav
 # save audio
-filepath = "/output/audio.wav" # change this to your desired output path
+filepath = "./output/audio.wav" # change this to your desired output path
 write_wav(filepath, SAMPLE_RATE, audio_array)
