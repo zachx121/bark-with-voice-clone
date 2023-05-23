@@ -21,7 +21,7 @@ model = load_codec_model(use_gpu=True)
 
 
 # Load and pre-process the audio waveform
-audio_filepath = 'audio_CXM.wav' # the audio you want to clone (will get truncated so 5-10 seconds is probably fine, existing samples that I checked are around 7 seconds)
+audio_filepath = 'audio_CXM_short.wav' # the audio you want to clone (will get truncated so 5-10 seconds is probably fine, existing samples that I checked are around 7 seconds)
 #device = 'cuda' # or 'cpu'
 device = 'cpu'
 wav, sr = torchaudio.load(audio_filepath)
@@ -57,7 +57,7 @@ from transformers import BertTokenizer
 from bark.generation import SAMPLE_RATE, preload_models, codec_decode, generate_coarse, generate_fine, generate_text_semantic
 
 # Enter your prompt and speaker here
-text_prompt = "可以白嫖亚马逊的"
+text_prompt = "牛啊，这个就是私人管家了"
 voice_name = "CXM" # use your custom voice name here if you have one
 
 # load the tokenizer
