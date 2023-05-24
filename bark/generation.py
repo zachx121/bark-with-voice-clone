@@ -212,6 +212,7 @@ def _load_model(ckpt_path, device, use_small=False, model_type="text"):
     if not os.path.exists(ckpt_path):
         logger.info(f"{model_type} model not found, downloading into `{CACHE_DIR}`.")
         _download(model_info["repo_id"], model_info["file_name"], ckpt_path)
+    logger.info(f"using model from: {ckpt_path}")
     checkpoint = torch.load(ckpt_path, map_location=device)
     # this is a hack
     model_args = checkpoint["model_args"]
