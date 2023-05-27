@@ -117,7 +117,8 @@ def generate_scope(text_prompt, voice_name, output_fp=None):
 generate_scope("[laughs]say we are [sighs] friends [clears throat]", "en_speaker_1")
 generate_scope("say we are [sighs] friends [clears throat]", "en_speaker_3")
 generate_scope("say we are [sighs] friends [clears throat]", "en_speaker_3")
-
+generate_scope("[happy]let's have a drink!", "en_speaker_5")
+generate_scope("[sad]let's have a drink!", "en_speaker_5")
 
 import sys
 sys.exit(0)
