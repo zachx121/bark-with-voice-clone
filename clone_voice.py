@@ -1,3 +1,8 @@
+import logging
+logging.basicConfig(format='[%(asctime)s-%(levelname)s]: %(message)s',
+                    datefmt="%Y-%m-%d %H:%M:%S",
+                    level=logging.INFO)
+
 from bark.generation import preload_models
 
 preload_models(
@@ -50,7 +55,7 @@ def clone_scope(voice_name, audio_fp, text):
     np.savez(output_path, fine_prompt=codes, coarse_prompt=codes[:2, :], semantic_prompt=semantic_tokens)
 
 
-def generate_scope(text_prompt, voice_name, output_fp="./output/audio.wav"):
+def generate_scope(text_prompt, voice_name, output_fp=None):
     print(">>> START Generation parts")
     from bark.api import generate_audio
     from transformers import BertTokenizer
@@ -104,16 +109,25 @@ def generate_scope(text_prompt, voice_name, output_fp="./output/audio.wav"):
     audio_array = codec_decode(x_fine_gen)
     from scipy.io.wavfile import write as write_wav
     # save audio
-    filepath = output_fp  # change this to your desired output path
+    file_name = "audio_%s_%s.wav" % (voice_name, text_prompt[:5].replace(" ", "_"))
+    filepath = output_fp if output_fp is not None else f"./output/{file_name}"
     write_wav(filepath, SAMPLE_RATE, audio_array)
 
 
+generate_scope("[laughs]say we are [sighs] friends [clears throat]", "en_speaker_1")
+generate_scope("say we are [sighs] friends [clears throat]", "en_speaker_3")
+generate_scope("say we are [sighs] friends [clears throat]", "en_speaker_3")
+
+
+import sys
+sys.exit(0)
 print(">>> clone 'CXM_short'")
 clone_scope("CXM_short", "audio_CXM_short.wav", "所以他们不会在乎这么一点的投入")
 print(">>> generate 'CXM_short'")
 generate_scope("所以他们不会在乎这么一点的投入", "CXM_short", "./output/audio_CXM_short_0.wav")
 generate_scope("可以白嫖亚马逊的", "CXM_short", "./output/audio_CXM_short_1.wav")
 generate_scope("牛啊，人工智能管家", "CXM_short", "./output/audio_CXM_short_2.wav")
+generate_scope("牛啊，人工智能管家", "en_speaker_1", "./output/audio_CXM_short_2.wav")
 
 print(">>> clone 'CXM'")
 clone_scope("CXM", "audio_CXM.wav", "面对的是一个几十亿几百亿的市场，所以他们不会在乎这么一点的投入，他们不会想到他们根本做不成，你懂吗？")
