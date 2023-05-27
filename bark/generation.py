@@ -190,6 +190,7 @@ def clean_models(model_key=None):
 
 
 def _load_model(ckpt_path, device, use_small=False, model_type="text"):
+    logging.info(">>> using ckpt_path: %s" % ckpt_path)
     if model_type == "text":
         ConfigClass = GPTConfig
         ModelClass = GPT
