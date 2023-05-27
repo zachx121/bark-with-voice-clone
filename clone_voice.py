@@ -2,6 +2,8 @@ import logging
 logging.basicConfig(format='[%(asctime)s-%(levelname)s]: %(message)s',
                     datefmt="%Y-%m-%d %H:%M:%S",
                     level=logging.INFO)
+import os
+os.environ["XDG_CACHE_HOME"] = "/nfs/volume-100001-8/zhoutongzt/bark/"
 
 from bark.generation import preload_models
 
@@ -13,8 +15,7 @@ preload_models(
     fine_use_gpu=True,
     fine_use_small=False,
     codec_use_gpu=True,
-    force_reload=False,
-    path="models"
+    force_reload=False
 )
 
 from bark.generation import load_codec_model, generate_text_semantic
@@ -79,8 +80,7 @@ def generate_scope(text_prompt, voice_name, output_fp=None):
         fine_use_gpu=True,
         fine_use_small=False,
         codec_use_gpu=True,
-        force_reload=False,
-        path="models"
+        force_reload=False
     )
 
     # simple generation
